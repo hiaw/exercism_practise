@@ -18,7 +18,7 @@ isQuestion something =
 
 isShouting: String -> Bool
 isShouting something =
-    String.toUpper something == something && String.toLower something
+    String.toUpper something == something && String.toLower something /= something
 
 isSilent: String -> Bool
 isSilent something =
