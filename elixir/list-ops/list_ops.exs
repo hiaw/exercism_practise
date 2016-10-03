@@ -16,36 +16,51 @@ defmodule ListOps do
 
   @spec reverse(list) :: list
   def reverse(l) do
-    reversing(l, [])
+    reversing([], l)
   end
 
-  def reversing([h|t], acc) do reversing(t, [h] ++ acc ) end
-  def reversing([], acc) do acc end
+  def reversing(acc, [h|t]) do
+    [ h| acc ]
+    |> reversing(t)
+  end
+  def reversing(acc, []) do acc end
 
   @spec map(list, (any -> any)) :: list
   def map(l, f) do
-
+    mapping(l, f)
   end
+
+  def mapping([h|t], f) do
+    [f.(h) | mapping(t, f)]
+  end
+
+  def mapping([], f) do [] end
 
   @spec filter(list, (any -> as_boolean(term))) :: list
   def filter(l, f) do
-    filtering(l, f, [])
+    filtering(l, f)
   end
 
-  def filtering([h|t], f, acc) do
-    if true do
-      filtering(t, f, acc ++ [h] )
+  def filtering([h|t], f) do
+    if f.(h) do
+      [h | filtering(t, f )]
     else
-      filtering(t, f, acc )
+      filtering(t, f )
     end
   end
-  def filtering([], _f, acc) do acc end
+  def filtering([], _f ) do [] end
 
   @type acc :: any
   @spec reduce(list, acc, ((any, acc) -> acc)) :: acc
   def reduce(l, acc, f) do
-
+    reducing(l, acc, f)
   end
+
+  def reducing([h|t], acc, f) do
+    reducing(t, f.(h, acc), f)
+  end
+
+  def reducing([], acc, _f) do acc end
 
   @spec append(list, list) :: list
   def append(a, b) do
@@ -57,16 +72,16 @@ defmodule ListOps do
 
   @spec concat([[any]]) :: [any]
   def concat(ll) do
-    List.flatten(ll)
-    # concating(ll, [])
+    reverse(concating([], ll))
   end
 
-  def concating([h|t], acc) do
+  def concating(acc, [h|t]) do
     if is_list(h) do
-      concating(t, concating(h, acc))
+      concating(concating(acc, h), t)
     else
-      concating(t, acc ++ [h])
+      [h|acc]
+      |> concating(t)
     end
   end
-  def concating([], acc) do acc end
+  def concating(acc, []) do acc end
 end
