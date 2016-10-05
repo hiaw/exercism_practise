@@ -1,24 +1,63 @@
 # Meetup
 
-**TODO: Add description**
+Calculate the date of meetups.
 
-## Installation
+Typically meetups happen on the same day of the week.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+Examples are
 
-  1. Add `meetup` to your list of dependencies in `mix.exs`:
+- the first Monday
+- the third Tuesday
+- the Wednesteenth
+- the last Thursday
 
-    ```elixir
-    def deps do
-      [{:meetup, "~> 0.1.0"}]
-    end
-    ```
+Note that "Monteenth", "Tuesteenth", etc are all made up words. There
+was a meetup whose members realised that there are exactly 7 days that
+end in '-teenth'. Therefore, one is guaranteed that each day of the week
+(Monday, Tuesday, ...) will have exactly one date that is named with '-teenth'
+in every month.
 
-  2. Ensure `meetup` is started before your application:
+## Running tests
 
-    ```elixir
-    def application do
-      [applications: [:meetup]]
-    end
-    ```
+Execute the tests with:
+
+```bash
+$ elixir bob_test.exs
+```
+
+(Replace `bob_test.exs` with the name of the test file.)
+
+
+### Pending tests
+
+In the test suites, all but the first test have been skipped.
+
+Once you get a test passing, you can unskip the next one by
+commenting out the relevant `@tag :skip` with a `#` symbol.
+
+For example:
+
+```elixir
+# @tag :skip
+test "shouting" do
+  assert Bob.hey("WATCH OUT!") == "Whoa, chill out!"
+end
+```
+
+Or, you can enable all the tests by commenting out the
+`ExUnit.configure` line in the test suite.
+
+```elixir
+# ExUnit.configure trace: true
+```
+
+For more detailed information about the Elixir track, please
+see the [help page](http://exercism.io/languages/elixir).
+
+## Source
+
+Jeremy Hinegardner mentioned a Boulder meetup that happens on the Wednesteenth of every month [https://twitter.com/copiousfreetime](https://twitter.com/copiousfreetime)
+
+## Submitting Incomplete Problems
+It's possible to submit an incomplete solution so you can see how others have completed the exercise.
 
