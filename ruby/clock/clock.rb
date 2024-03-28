@@ -17,7 +17,7 @@ class Clock
   def to_s
     hour = (@minute / MINUTES_PER_HOUR).floor
     @minute %= MINUTES_PER_HOUR
-    hour %= HOURS_PER_DAY if hour >= HOURS_PER_DAY
+    hour %= HOURS_PER_DAY
 
     "#{format('%02d', hour)}:#{format('%02d', @minute)}"
   end
