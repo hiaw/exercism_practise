@@ -14,11 +14,25 @@ class Clock
     @minute += hour * MINUTES_PER_HOUR
   end
 
+  attr_accessor :minute
+
   def to_s
     hour = (@minute / MINUTES_PER_HOUR).floor
     @minute %= MINUTES_PER_HOUR
     hour %= HOURS_PER_DAY
 
     "#{format('%02d', hour)}:#{format('%02d', @minute)}"
+  end
+
+  def +(other)
+    Clock.new(minute: @minute + other.minute)
+  end
+
+  def -(other)
+    Clock.new(minute: @minute - other.minute)
+  end
+
+  def ==(other)
+    to_s == other.to_s
   end
 end
