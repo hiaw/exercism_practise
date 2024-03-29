@@ -126,7 +126,7 @@ class TournamentTest < Minitest::Test
   end
 
   def test_typical_input
-    skip
+    # skip
     input = <<~INPUT
       Allegoric Alaskans;Blithering Badgers;win
       Devastating Donkeys;Courageous Californians;draw
@@ -168,7 +168,7 @@ class TournamentTest < Minitest::Test
   end
 
   def test_ties_broken_alphabetically
-    skip
+    # skip
     input = <<~INPUT
       Courageous Californians;Devastating Donkeys;win
       Allegoric Alaskans;Blithering Badgers;win

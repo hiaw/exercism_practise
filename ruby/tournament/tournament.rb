@@ -78,7 +78,7 @@ class Tournament
         teams[team_2_name].play_opposite(score)
       end
     end
-    teams.values.sort { |team| team.points }.reverse.each do |team|
+    teams.values.sort { |a, b| [a.points, b.name] <=> [b.points, a.name] }.reverse.each do |team|
       # teams.each_value do |team|
       # p team
       output += team.to_s
