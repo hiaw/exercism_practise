@@ -31,7 +31,7 @@ class TournamentTest < Minitest::Test
   end
 
   def test_a_win_can_also_be_expressed_as_a_loss
-    skip
+    # skip
     input = <<~INPUT
       Blithering Badgers;Allegoric Alaskans;loss
     INPUT
@@ -148,7 +148,7 @@ class TournamentTest < Minitest::Test
   end
 
   def test_incomplete_competition_not_all_pairs_have_played
-    skip
+    # skip
     input = <<~INPUT
       Allegoric Alaskans;Blithering Badgers;loss
       Devastating Donkeys;Allegoric Alaskans;loss
@@ -190,7 +190,7 @@ class TournamentTest < Minitest::Test
   end
 
   def test_ensure_points_sorted_numerically
-    skip
+    # skip
     input = <<~INPUT
       Devastating Donkeys;Blithering Badgers;win
       Devastating Donkeys;Blithering Badgers;win

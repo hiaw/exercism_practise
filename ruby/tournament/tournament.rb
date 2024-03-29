@@ -48,7 +48,8 @@ class Team
 
   def to_s
     title = (@name + ' ' * 30)[0, 31]
-    "#{title}|  #{@played} |  #{@win} |  #{@draw} |  #{@loss} |  #{points}\n"
+    point = (points >= 10 ? '' : ' ') + points.to_s
+    "#{title}|  #{@played} |  #{@win} |  #{@draw} |  #{@loss} | #{point}\n"
   end
 
   def ==(other)
@@ -77,7 +78,9 @@ class Tournament
         teams[team_2_name].play_opposite(score)
       end
     end
-    teams.each_value do |team|
+    teams.values.sort { |team| team.points }.reverse.each do |team|
+      # teams.each_value do |team|
+      # p team
       output += team.to_s
     end
     output
